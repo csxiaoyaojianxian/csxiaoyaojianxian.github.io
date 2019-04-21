@@ -5,82 +5,116 @@
     <meta charset="UTF-8">
     <title>Home - PWA Lesson </title>
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
-    <link rel="stylesheet" href="/static/styles/main.css">
-
-    <!-- 引入manifest.json -->
     <link rel="manifest" href="manifest.json">
-
-    <!-- 指定桌面icon -->
-    <link rel="apple-touch-icon" href="/static/img/apple-touch-icon-152x152.png">
-    <!-- 指定应用名称 -->
-    <meta name="apple-mobile-web-app-title" content="PWA Lesson">
-    <!-- 是否隐藏Safari地址栏等 -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <!-- 修改ios状态栏颜色 -->
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <!-- 修改chrome地址栏主题色，覆盖manifest.json中的theme_color -->
-    <meta name="theme-color" content="green">
 </head>
 <body>
     <div id="app">
-        <header class="app-header-wrapper">
-            <div class="app-header-left"></div>
-            <div class="app-header-middle"> PWA Lesson </div>
-            <div class="app-header-right"></div>
-        </header>
-     <!--    <div class="app-view">
-            <div class="content">
-                <h2> PWA Lesson Demo </h2>
-            </div>
-        </div> -->
-        <h1>manifest</h1>
+        <h1>消息推送</h1>
         <pre>
-【 name 】 应用名称，用于安装横幅、启动画面显示
-【 short_name 】 应用短名称，用于主屏幕显示
-【 display 】
-    fullscreen	应用的显示界面将占满整个屏幕
-    standalone	浏览器相关UI（如导航栏、工具栏等）将会被隐藏
-    minimal-ui	显示形式与standalone类似，浏览器相关UI会最小化为一个按钮，不同浏览器在实现上略有不同
-    browser	    浏览器模式，与普通网页在浏览器中打开的显示一致
-【 start_url 】 启动页
-    "/"
-【 scope 】 作用域
-        </pre>
-        <h1>添加图标</h1>
-        <pre>
-1. 主动添加
-2. 横幅提示添加（safari不支持）PWA站点满足下列条件时自动添加
-    部署manifest.json (配置了short_name、name、icons[image/png]、start_url、display[standalone/fullscreen]属性)
-    注册service worker
-    支持https访问
-    用户在同一浏览器中至少访问两次，两次至少间隔5分钟
         </pre>
     </div>
     <script>
-    if ('serviceWorker' in navigator) {
+    if ('serviceWorker' in navigator && 'PushManager' in window) {
         window.addEventListener('load', function () {
+            if (!('serviceWorker' in navigator)) {
+                // Service Worker isn't supported on this browser, disable or hide UI.
+                return;
+            }
+
+            if (!('PushManager' in window)) {
+                // Push isn't supported on this browser, disable or hide UI.
+                return;
+            }
+            // 注册Service Worker
             navigator.serviceWorker.register('/sw.js', {scope: '/'})
                 .then(function (registration) {
                     // 注册成功
                     console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                    // 执行弹窗逻辑
+                    askPermission(() => {
+                        registration.showNotification('Hello World!');
+                    })
                 })
                 .catch(function (err) {
                     // 注册失败:(
                     console.log('ServiceWorker registration failed: ', err);
                 });
-        });
-        // 横幅触发事件，目前支持度不高
-        window.addEventListener('beforeinstallprompt', function (e) {
-            // beforeinstallprompt event fired
-            e.userChoice.then(function (choiceResult) {
-                if (choiceResult.outcome === 'dismissed') {
-                    alert('用户取消安装应用');
-                }
-                else {
-                    alert('用户安装了应用');
-                }
+            navigator.serviceWorker.ready.then(function(reg) {
+                // 订阅消息推送
+                subscribe(reg)
+                // 取消订阅
+                /*
+                unsubscribe(reg)
+                */
             });
         });
+        // step1: （可选）订阅消息前需要获取授权，如果不显式调用，在订阅时也会提示
+        function askPermission(callback) {
+            return new Promise(function (resolve, reject) {
+                const permissionPromise = Notification.requestPermission(result => {
+                    // 旧版本
+                    resolve(result);
+                });
+                if (permissionPromise) {
+                    // 新版本
+                    permissionPromise.then(resolve, reject);
+                }
+            })
+            .then(function (permissionResult) {
+                if (permissionResult === 'granted') {
+                    // 用户授权执行逻辑
+                    callback()
+                }
+                else {
+                    console.log('no permission');
+                }
+            });
+        }
+
+        // step2: 订阅
+        function subscribe(serviceWorkerReg) {
+            serviceWorkerReg.pushManager.subscribe({
+                userVisibleOnly: true,
+                applicationServerKey: urlBase64ToUint8Array('<applicationServerKey>')
+            })
+            .then(function (subscription) {
+                // 发送推送订阅对象到服务器，具体实现中发送请求到后端api
+                sendEndpointInSubscription(subscription);
+            })
+            .catch(function () {
+                if (Notification.permission === 'denied') {
+                    // 用户拒绝了订阅请求
+                }
+            });
+        }
+        // step3: （可选）取消订阅
+        function unsubscribe(serviceWorkerReg) {
+            serviceWorkerReg.pushManager.getSubscription()
+                .then(function (subscription) {
+                    subscription.unsubscribe()
+                        .then(function (successful) {
+                            //
+                        })
+                        .catch(function (e) {
+                            //
+                        });
+                });
+        }
+        
+        // 将base64的applicationServerKey转换成UInt8Array
+        function urlBase64ToUint8Array(base64String) {
+            console.log(base64String)
+            var padding = '='.repeat((4 - base64String.length % 4) % 4);
+            var base64 = (base64String + padding)
+                .replace(/\-/g, '+')
+                .replace(/_/g, '/');
+            var rawData = window.atob(base64);
+            var outputArray = new Uint8Array(rawData.length);
+            for (var i = 0, max = rawData.length; i < max; ++i) {
+                outputArray[i] = rawData.charCodeAt(i);
+            }
+            return outputArray;
+        }
     }
   </script>
 </body>
