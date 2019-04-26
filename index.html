@@ -1,121 +1,42 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Home - PWA Lesson </title>
-    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
-    <link rel="manifest" href="manifest.json">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <link rel="manifest" href="/manifest.json">
+
+    <meta name="theme-color" content="#5eace0"/>
+
+    <!-- 针对safari（iOS）的添加到桌面功能进行相关设置 -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="图书搜索">
+    <link rel="apple-touch-icon" href="img/icons/book-256.png">
+
+    <!-- IE的设置 -->
+    <meta name="application-name" content="图书搜索" />
+    <meta name="msapplication-TileColor" content="#222">
+    <meta name="msapplication-square70x70logo" content="img/icons/book-72.png" />
+    <meta name="msapplication-square150x150logo" content="img/icons/book-144.png" />
+    <meta name="msapplication-square310x310logo" content="img/icons/book-256.png" />
+
+    <script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+    <title>PWA: 电影搜索</title>
 </head>
 <body>
-    <div id="app">
-        <h1>消息推送</h1>
-        <pre>
-        </pre>
-    </div>
-    <script>
-    if ('serviceWorker' in navigator && 'PushManager' in window) {
-        window.addEventListener('load', function () {
-            if (!('serviceWorker' in navigator)) {
-                // Service Worker isn't supported on this browser, disable or hide UI.
-                return;
-            }
-
-            if (!('PushManager' in window)) {
-                // Push isn't supported on this browser, disable or hide UI.
-                return;
-            }
-            // 注册Service Worker
-            navigator.serviceWorker.register('/sw.js', {scope: '/'})
-                .then(function (registration) {
-                    // 注册成功
-                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
-                    // 执行弹窗逻辑
-                    askPermission(() => {
-                        registration.showNotification('Hello World!');
-                    })
-                })
-                .catch(function (err) {
-                    // 注册失败:(
-                    console.log('ServiceWorker registration failed: ', err);
-                });
-            navigator.serviceWorker.ready.then(function(reg) {
-                // 订阅消息推送
-                subscribe(reg)
-                // 取消订阅
-                /*
-                unsubscribe(reg)
-                */
-            });
-        });
-        // step1: （可选）订阅消息前需要获取授权，如果不显式调用，在订阅时也会提示
-        function askPermission(callback) {
-            return new Promise(function (resolve, reject) {
-                const permissionPromise = Notification.requestPermission(result => {
-                    // 旧版本
-                    resolve(result);
-                });
-                if (permissionPromise) {
-                    // 新版本
-                    permissionPromise.then(resolve, reject);
-                }
-            })
-            .then(function (permissionResult) {
-                if (permissionResult === 'granted') {
-                    // 用户授权执行逻辑
-                    callback()
-                }
-                else {
-                    console.log('no permission');
-                }
-            });
-        }
-
-        // step2: 订阅
-        function subscribe(serviceWorkerReg) {
-            serviceWorkerReg.pushManager.subscribe({
-                userVisibleOnly: true,
-                applicationServerKey: urlBase64ToUint8Array('<applicationServerKey>')
-            })
-            .then(function (subscription) {
-                // 发送推送订阅对象到服务器，具体实现中发送请求到后端api
-                sendEndpointInSubscription(subscription);
-            })
-            .catch(function () {
-                if (Notification.permission === 'denied') {
-                    // 用户拒绝了订阅请求
-                }
-            });
-        }
-        // step3: （可选）取消订阅
-        function unsubscribe(serviceWorkerReg) {
-            serviceWorkerReg.pushManager.getSubscription()
-                .then(function (subscription) {
-                    subscription.unsubscribe()
-                        .then(function (successful) {
-                            //
-                        })
-                        .catch(function (e) {
-                            //
-                        });
-                });
-        }
-        
-        // 将base64的applicationServerKey转换成UInt8Array
-        function urlBase64ToUint8Array(base64String) {
-            console.log(base64String)
-            var padding = '='.repeat((4 - base64String.length % 4) % 4);
-            var base64 = (base64String + padding)
-                .replace(/\-/g, '+')
-                .replace(/_/g, '/');
-            var rawData = window.atob(base64);
-            var outputArray = new Uint8Array(rawData.length);
-            for (var i = 0, max = rawData.length; i < max; ++i) {
-                outputArray[i] = rawData.charCodeAt(i);
-            }
-            return outputArray;
-        }
-    }
-  </script>
+    <header>
+        <span class="logo"></span>
+        <input id="js-search-input" placeholder="关键词查询…">
+        <button id="js-search-btn">搜索</button>
+    </header>
+    <main>
+        <div id="js-loading" class="loading"></div>
+        <div id="js-tip" class="tip"></div>
+        <ul class="list" id="js-list"></ul>
+        <a id="js-thanks" class="thanks" href="https://developers.douban.com/wiki/?title=guide">- 本Demo基于豆瓣API，感谢豆瓣开放平台 -</a>
+    </main>
+    <script type="text/javascript" src="./index.js"></script>
 </body>
 </html>
