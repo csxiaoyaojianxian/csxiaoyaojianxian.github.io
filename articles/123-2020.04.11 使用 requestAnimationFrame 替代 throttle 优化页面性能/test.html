@@ -1,0 +1,177 @@
+<!--
+ * @Author: victorsun
+ * @Date: 2020-04-12 15:08:31
+ * @LastEditors: victorsun - csxiaoyao
+ * @LastEditTime: 2020-04-12 19:45:01
+ * @Description: sunjianfeng@csxiaoyao.com
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>csxiaoyao.com - 前端性能测试</title>
+<style>
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+.box {
+    width: 100px;
+    height: 3000px;
+    background-color: red;
+    position: absolute;
+    left: 100px;
+    right: 100px;
+    cursor: pointer;
+}
+</style>
+</head>
+<body>
+<div>
+    x: <span class="x"></span><br>
+    y: <span class="y"></span><br>
+</div>
+<div class="box"></div>
+<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.js"></script>
+<script>
+
+function busyService () {
+    var num = 0
+    for (var i = 0; i < 1000000; i++) {
+        num += Math.random()
+    }
+    console.log(num)
+}
+function busyServiceInterval () {
+    var num = 0
+    for (var i = 0; i < 1000000; i++) {
+        num += Math.random()
+    }
+    console.log(num)
+}
+function busyServiceIntervalSeveral () {
+    var num = 0
+    for (var i = 0; i < 10000; i++) {
+        num += Math.random()
+    }
+    console.log(num)
+}
+
+function handleMouseDown (e) {
+    var diffX = e.offsetX
+    var diffY = e.offsetY
+    // $('body').off('mousemove.test').on('mousemove.test', throttle((event) => { handleMouseMove(event, diffX, diffY) }, 16))
+    $('body').off('mousemove.test').on('mousemove.test', (event) => { handleMouseMove(event, diffX, diffY) })
+    $('body').off('mouseup.test').on('mouseup.test', handleMouseUp)
+}
+
+function handleMouseMove (e, diffX, diffY) {
+    busyService()
+    $('.box').offset({
+        top: e.clientY - diffY,
+        left: e.clientX - diffX
+    })
+    $('.x').text($('.box').offset().left)
+    $('.y').text($('.box').offset().top)
+}
+
+function handleMouseUp (e) {
+    $('body').off('mousemove.test')
+    $('body').off('mouseup.test')
+}
+
+// $('body').on('mousedown.test', '.box', handleMouseDown)
+
+var scheduledAnimationFrame = {}
+function newRequestAnimationFrame (callback = () => {}, key = 'default') {
+  if (scheduledAnimationFrame[key]) { return false }
+  scheduledAnimationFrame[key] = true
+  window.requestAnimationFrame(() => {
+    scheduledAnimationFrame[key] = false
+    callback()
+  })
+  return true
+}
+
+// setInterval(function () {
+//     busyServiceInterval()
+// }, 25)
+// setInterval(function () {
+//     busyServiceInterval()
+// }, 13)
+// setInterval(function () {
+//     busyServiceInterval()
+// }, 7)
+// setInterval(function () {
+//     busyServiceInterval()
+// }, 3)
+
+// requestAnimationFrame
+// function handleMouseMove (e, diffX, diffY) {
+//     newRequestAnimationFrame(function () {
+//         busyService()
+//         $('.box').offset({
+//             top: e.clientY - diffY,
+//             left: e.clientX - diffX
+//         })
+//         $('.x').text($('.box').offset().left)
+//         $('.y').text($('.box').offset().top)
+//     }, 'test')
+// }
+function handleMouseMove (e, diffX, diffY) {
+    window.requestAnimationFrame(function () {
+        // busyService()
+        $('.box').offset({
+            top: e.clientY - diffY,
+            left: e.clientX - diffX
+        })
+        $('.x').text($('.box').offset().left)
+        $('.y').text($('.box').offset().top)
+    })
+}
+
+// var throttle = function (func, delay) {
+//   let timer = null
+//   return function () {
+//     const context = this
+//     const args = arguments
+//     if (!timer) {
+//       timer = setTimeout(function () {
+//         func.apply(context, args)
+//         timer = null
+//       }, delay)
+//     }
+//   }
+// }
+
+// // throttle
+// function handleMouseMove (e, diffX, diffY) {
+//     busyService()
+//     $('.box').offset({
+//         top: e.clientY - diffY,
+//         left: e.clientX - diffX
+//     })
+//     $('.x').text($('.box').offset().left)
+//     $('.y').text($('.box').offset().top)
+// }
+
+let lock = {}
+function animationFrame (callback = (timestamp) => {}, key = 'default') {
+    if (lock[key]) { return false }
+    lock[key] = true
+    window.requestAnimationFrame((timestamp) => {
+        lock[key] = false
+        callback(timestamp)
+    })
+    return true
+}
+// 调用
+window.addEventListener('scroll', () => { animationFrame((timestamp) => doAnimation(timestamp)) })
+function doAnimation (timestamp) {
+    console.log(timestamp)
+}
+</script>
+</body>
+</html>
