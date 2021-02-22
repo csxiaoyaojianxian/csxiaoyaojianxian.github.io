@@ -1,11 +1,10 @@
-# 【云+社区年度征文】webpack 学习笔记系列02-模块化开发
+# webpack 学习笔记系列02-模块化开发
 
-[TOC]
-
-> Write By CS逍遥剑仙   
-> 我的主页: [www.csxiaoyao.com](http://www.csxiaoyao.com/)    
-> GitHub: [github.com/csxiaoyaojianxian](https://github.com/csxiaoyaojianxian)    
-> Email: sunjianfeng@csxiaoyao.com   
+> Write By [CS逍遥剑仙](http://home.ustc.edu.cn/~cssjf/)   
+> 我的主页: [csxiaoyao.com](https://csxiaoyao.com)   
+> GitHub: [github.com/csxiaoyaojianxian](https://github.com/csxiaoyaojianxian)   
+> Email: [sunjianfeng@csxiaoyao.com](mailto:sunjianfeng@csxiaoyao.com)  
+> QQ: [1724338257](http://wpa.qq.com/msgrd?uin=1724338257&site=qq&menu=yes)
 
 ## 1. 模块化规范
 
@@ -244,6 +243,4 @@ const html = require('html-loader!./loader.html');
 console.log(html);
 ```
 
-
-
-![](./pic/sign.jpg)
+![sign](https://raw.githubusercontent.com/csxiaoyaojianxian/ImageHosting/master/img/sign.jpg)

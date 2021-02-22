@@ -1,13 +1,10 @@
 # 使用 requestAnimationFrame 替代 throttle 优化页面性能
 
-[TOC]
-
-> Write By CS逍遥剑仙
-> 我的主页: [www.csxiaoyao.com](http://www.csxiaoyao.com)
-> GitHub: [github.com/csxiaoyaojianxian](https://github.com/csxiaoyaojianxian)
-> Email: sunjianfeng@csxiaoyao.com   
-
-
+> Write By [CS逍遥剑仙](http://home.ustc.edu.cn/~cssjf/)   
+> 我的主页: [csxiaoyao.com](https://csxiaoyao.com)   
+> GitHub: [github.com/csxiaoyaojianxian](https://github.com/csxiaoyaojianxian)   
+> Email: [sunjianfeng@csxiaoyao.com](mailto:sunjianfeng@csxiaoyao.com)  
+> QQ: [1724338257](http://wpa.qq.com/msgrd?uin=1724338257&site=qq&menu=yes)
 
 ## 1. throttle 的缺陷
 
@@ -132,5 +129,4 @@ window.addEventListener('scroll', () => { animationFrame((time) => doAnimation(t
 与防抖节流函数使用 `settimeout` 基于时间来管理队列不同，`window.requestAnimationFrame` 基于设备的刷新频率，因此不用传时间参数，但是函数的执行仍然使用的是浏览器的页面事件循环系统，因此问题 2：回调函数的处理时间不准确的问题同样不能解决。需要注意：节流函数和 `window.requestAnimationFrame` 二者不能混用，否则回调函数的调用将可能延长。`window.requestAnimationFrame` 相比节流函数降低了可控性，但是提升了性能和精确度，在处理 `scroll`、`move` 之类的事件时，若不考虑低版本浏览器兼容性，更加推荐使用。
 
 
-
-![](https://raw.githubusercontent.com/csxiaoyaojianxian/ImageHosting/master/img/sign.jpg)
+![sign](https://raw.githubusercontent.com/csxiaoyaojianxian/ImageHosting/master/img/sign.jpg)

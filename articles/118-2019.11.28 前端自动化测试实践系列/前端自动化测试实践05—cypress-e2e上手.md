@@ -1,13 +1,12 @@
 # 前端自动化测试实践05—cypress-e2e入门
 
-[TOC]
+> Write By [CS逍遥剑仙](http://home.ustc.edu.cn/~cssjf/)   
+> 我的主页: [csxiaoyao.com](https://csxiaoyao.com)   
+> GitHub: [github.com/csxiaoyaojianxian](https://github.com/csxiaoyaojianxian)   
+> Email: [sunjianfeng@csxiaoyao.com](mailto:sunjianfeng@csxiaoyao.com)  
+> QQ: [1724338257](http://wpa.qq.com/msgrd?uin=1724338257&site=qq&menu=yes)
 
-> Write By CS逍遥剑仙
-> 我的主页: [www.csxiaoyao.com](http://www.csxiaoyao.com)
-> GitHub: [github.com/csxiaoyaojianxian](https://github.com/csxiaoyaojianxian)
-> Email: sunjianfeng@csxiaoyao.com   
-
-> 本节代码地址 [https://github.com/csxiaoyaojianxian/JavaScriptStudy](https://github.com/csxiaoyaojianxian/JavaScriptStudy) 下的自动化测试目录
+本节代码地址 [https://github.com/csxiaoyaojianxian/JavaScriptStudy](https://github.com/csxiaoyaojianxian/JavaScriptStudy) 下的自动化测试目录
 
 ## 1. 端到端测试
 
@@ -93,11 +92,11 @@ describe('My First Test', function () {
 
 可以看到用例已经被添加到控制台：
 
-![](./pic/5-01.png)
+![](./118/5-01.png)
 
 点击执行用例，可以看到 chrome 被打开并自动执行用例：
 
-![](./pic/5-03.png)
+![](./118/5-03.png)
 
 >其中：
 >
@@ -232,12 +231,10 @@ $ ./node_modules/cypress/bin/cypress run --record --key xxxxxxxx
 cy.screenshot()
 ```
 
-![](./pic/5-04.png)
+![](./118/5-04.png)
 
 ## 6. 总结
 
 Cypress 非常强大，本文涉及的只是很小一部分，更多有用的功能可以去官网探索。
 
-
-
-![](https://raw.githubusercontent.com/csxiaoyaojianxian/ImageHosting/master/img/sign.jpg)
+![sign](https://raw.githubusercontent.com/csxiaoyaojianxian/ImageHosting/master/img/sign.jpg)

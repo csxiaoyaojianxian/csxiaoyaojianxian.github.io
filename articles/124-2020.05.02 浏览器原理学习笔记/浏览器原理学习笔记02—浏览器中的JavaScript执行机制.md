@@ -1,15 +1,14 @@
 # 浏览器原理学习笔记02—浏览器中的JavaScript执行机制
 
-[TOC]
-
-> Write By CS逍遥剑仙  
-> 我的主页: [www.csxiaoyao.com](http://www.csxiaoyao.com)  
-> GitHub: [github.com/csxiaoyaojianxian](https://github.com/csxiaoyaojianxian)  
-> Email: sunjianfeng@csxiaoyao.com
+> Write By [CS逍遥剑仙](http://home.ustc.edu.cn/~cssjf/)   
+> 我的主页: [csxiaoyao.com](https://csxiaoyao.com)   
+> GitHub: [github.com/csxiaoyaojianxian](https://github.com/csxiaoyaojianxian)   
+> Email: [sunjianfeng@csxiaoyao.com](mailto:sunjianfeng@csxiaoyao.com)  
+> QQ: [1724338257](http://wpa.qq.com/msgrd?uin=1724338257&site=qq&menu=yes)
 
 ## 1. JavaScript 代码的执行流程
 
-![](https://raw.githubusercontent.com/csxiaoyaojianxian/ImageHosting/master/blog/124/02/01.png)
+![](./124/02/01.png)
 
 ### 1.1 编译阶段
 
@@ -62,13 +61,13 @@ function addAll (b, c) {
 addAll(3, 6)
 ```
 
-![](https://raw.githubusercontent.com/csxiaoyaojianxian/ImageHosting/master/blog/124/02/02.png)
+![](./124/02/02.png)
 
 ### 2.3 利用浏览器查看调用栈信息
 
 有两种方式：**debug** 和 **console**，此处 **(anonymous)** 即全局执行上下文。
 
-![](https://raw.githubusercontent.com/csxiaoyaojianxian/ImageHosting/master/blog/124/02/03.png)
+![](./124/02/03.png)
 
 ### 2.4 栈溢出(Stack Overflow)
 
@@ -100,7 +99,7 @@ foo()
 
 单个执行上下文中的变量查找见下图中步骤 3，而块级作用域(跨执行上下文)的变量查找见4.3。
 
-![](https://raw.githubusercontent.com/csxiaoyaojianxian/ImageHosting/master/blog/124/02/04.png)
+![](./124/02/04.png)
 
 ## 4. 作用域链和闭包
 
@@ -122,19 +121,19 @@ foo() // 2
 
 在每个执行上下文的变量环境中，都包含了一个外部引用 `outer` 指向外部的执行上下文，查找变量时首先会在当前执行上下文中查找，若未找到则继续在 outer 所指向的执行上下文中查找(如查找 myName 变量时在 bar 函数执行上下文中未找到，则在 outer 指向的全局执行上下文中查找)。
 
-![](https://raw.githubusercontent.com/csxiaoyaojianxian/ImageHosting/master/blog/124/02/05.png)
+![](./124/02/05.png)
 
 ### 4.2 词法作用域确定 outer 指向
 
 **词法作用域(静态作用域)** 由代码结构(代码中函数声明的位置)决定，和函数调用关系无关。
 
-![](https://raw.githubusercontent.com/csxiaoyaojianxian/ImageHosting/master/blog/124/02/06.png)
+![](./124/02/06.png)
 
 ### 4.3 块级作用域中(跨执行上下文)的变量查找
 
 单个执行上下文的变量查找上一节已经叙述，若当前执行上下文中未找到变量，则会沿 **作用域链** 查找，图中按照1，2，3，4，5的顺序最终在全局执行上下文中找到 `test = 1`。
 
-![](https://raw.githubusercontent.com/csxiaoyaojianxian/ImageHosting/master/blog/124/02/07.png)
+![](./124/02/07.png)
 
 ### 4.4 闭包
 
@@ -164,13 +163,13 @@ bar.getName()
 console.log(bar.getName())
 ```
 
-![](https://raw.githubusercontent.com/csxiaoyaojianxian/ImageHosting/master/blog/124/02/08.png)
+![](./124/02/08.png)
 
 #### 4.4.2 使用
 
 在开发者工具中可以看到，当调用 bar.getName 时，右边 Scope 项展示了从 "Local–>Closure(foo)–>Global" 的完整作用域链。Local 表示当前的 getName 函数的作用域，Closure(foo) 是指 foo 函数的闭包，Global 指全局作用域。JavaScript 引擎会沿着 **当前执行上下文**–>**foo 函数闭包**–>**全局执行上下文** 的顺序来查找 myName 变量。
 
-![](https://raw.githubusercontent.com/csxiaoyaojianxian/ImageHosting/master/blog/124/02/09.png)
+![](./124/02/09.png)
 
 #### 4.4.3 回收
 
@@ -209,7 +208,7 @@ printName: function () {
 
 ### 5.2 this 和 执行上下文 的联系
 
-![](https://raw.githubusercontent.com/csxiaoyaojianxian/ImageHosting/master/blog/124/02/10.png)
+![](./124/02/10.png)
 
 完整的执行上下文中包含了 **变量环境**、**词法环境**、**外部环境outer** 和 **this**，this 是和执行上下文绑定的(每个执行上下文包含一个 this)。对应三种执行上下文：全局执行上下文、函数执行上下文和 eval 执行上下文，this 也只有三种——**全局执行上下文中的 this**、**函数中的 this** 和 **eval 中的 this**。
 
@@ -337,5 +336,4 @@ myObj.showThis()
 
 默认情况直接调用一个函数，this 指向全局对象 window，可以通过启用 JavaScript 的 **严格模式** 设置函数的执行上下文中的 this 默认值是 undefined。如果要让 this 指向某个对象需要通过 call 来显式调用。
 
-
-![](https://raw.githubusercontent.com/csxiaoyaojianxian/ImageHosting/master/img/sign.jpg)
+![sign](https://raw.githubusercontent.com/csxiaoyaojianxian/ImageHosting/master/img/sign.jpg)

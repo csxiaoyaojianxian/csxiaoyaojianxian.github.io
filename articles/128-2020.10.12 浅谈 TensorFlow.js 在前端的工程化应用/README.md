@@ -1,11 +1,10 @@
-# 【技术创作101训练营】浅谈 TensorFlow.js 在前端的工程化应用
+# 浅谈 TensorFlow.js 在前端的工程化应用
 
-[TOC]
-
-> Write By CS逍遥剑仙
-> 我的主页: [www.csxiaoyao.com](http://www.csxiaoyao.com)
-> GitHub: [github.com/csxiaoyaojianxian](https://github.com/csxiaoyaojianxian)
-> Email: sunjianfeng@csxiaoyao.com   
+> Write By [CS逍遥剑仙](http://home.ustc.edu.cn/~cssjf/)   
+> 我的主页: [csxiaoyao.com](https://csxiaoyao.com)   
+> GitHub: [github.com/csxiaoyaojianxian](https://github.com/csxiaoyaojianxian)   
+> Email: [sunjianfeng@csxiaoyao.com](mailto:sunjianfeng@csxiaoyao.com)  
+> QQ: [1724338257](http://wpa.qq.com/msgrd?uin=1724338257&site=qq&menu=yes)
 
 ## 1. 起步
 
@@ -126,7 +125,7 @@ $ node node.js
 
 先看最终效果，用户在浏览器中点击上传一张照片，预测程序弹窗提示预测结果。
 
-![](./pic/01.png)
+![](./128/01.png)
 
 工程文件结构说明：
 
@@ -198,7 +197,7 @@ window.onload = async () => {
 
 同样先看最终效果，当用户上传一张图片后，程序预测图片的内容为 'android'。
 
-![](./pic/02.png)
+![](./128/02.png)
 
 在 `script.js` 中一步步进行迁移学习并预测：
 
@@ -294,7 +293,7 @@ $ npm i @tensorflow-models/speech-commands
 
 语音识别的本质依然是分类，仍然先看最终效果，首次打开页面会提示获取麦克风权限，浏览器实时获取麦克风数据，预测程序会根据预测结果对应的单词下添加绿色背景。
 
-![](./pic/03.png)
+![](./128/03.png)
 
 工程文件结构说明：
 
@@ -357,7 +356,7 @@ window.onload = async () => {
 
 浏览器中的效果如下图，点击按钮采集语音数据，采集一定量的训练数据后执行训练，最后保存模型到本地。
 
-![](./pic/04.png)
+![](./128/04.png)
 
 在 `script.js` 中一步步进行迁移学习并保存模型到本地：
 
@@ -550,5 +549,4 @@ $ tensorflowjs_converter --input_format=tfjs_layers_model --output_format=tfjs_g
 【 converter 】https://github.com/tensorflow/tfjs/tree/master/tfjs-converter
 
 
-
-![](https://raw.githubusercontent.com/csxiaoyaojianxian/ImageHosting/master/img/sign.jpg)
+![sign](https://raw.githubusercontent.com/csxiaoyaojianxian/ImageHosting/master/img/sign.jpg)

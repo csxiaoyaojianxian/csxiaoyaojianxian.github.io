@@ -1,15 +1,14 @@
 # Docker 学习总结
 
-[TOC]
-
-> Write By CS逍遥剑仙
-> 我的主页: [www.csxiaoyao.com](http://www.csxiaoyao.com)
-> GitHub: [github.com/csxiaoyaojianxian](https://github.com/csxiaoyaojianxian)
-> Email: sunjianfeng@csxiaoyao.com   
+> Write By [CS逍遥剑仙](http://home.ustc.edu.cn/~cssjf/)   
+> 我的主页: [csxiaoyao.com](https://csxiaoyao.com)   
+> GitHub: [github.com/csxiaoyaojianxian](https://github.com/csxiaoyaojianxian)   
+> Email: [sunjianfeng@csxiaoyao.com](mailto:sunjianfeng@csxiaoyao.com)  
+> QQ: [1724338257](http://wpa.qq.com/msgrd?uin=1724338257&site=qq&menu=yes)
 
 ## 1. docker 架构
 
-![](https://raw.githubusercontent.com/csxiaoyaojianxian/ImageHosting/master/blog/126/docker-arch.jpg)
+![](./126/docker-arch.jpg)
 
 ## 2. 环境安装
 
@@ -999,13 +998,13 @@ server {
 
 ## 12. docker cloud
 
-![](https://raw.githubusercontent.com/csxiaoyaojianxian/ImageHosting/master/blog/126/docker-cloud.png)
+![](./126/docker-cloud.png)
 
 ## 13. 参考
 
-![](https://raw.githubusercontent.com/csxiaoyaojianxian/ImageHosting/master/blog/126/docker-commands1.jpg)
+![](./126/docker-commands1.jpg)
 
-![](https://raw.githubusercontent.com/csxiaoyaojianxian/ImageHosting/master/blog/126/docker-commands2.jpg)
+![](./126/docker-commands2.jpg)
 
 
 
@@ -1014,4 +1013,4 @@ server {
 
 
 
-![](https://raw.githubusercontent.com/csxiaoyaojianxian/ImageHosting/master/img/sign.jpg)
+![sign](https://raw.githubusercontent.com/csxiaoyaojianxian/ImageHosting/master/img/sign.jpg)

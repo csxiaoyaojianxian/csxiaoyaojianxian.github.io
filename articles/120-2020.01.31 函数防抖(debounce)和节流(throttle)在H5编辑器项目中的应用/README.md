@@ -1,13 +1,10 @@
 # 函数防抖(debounce)和节流(throttle)在H5编辑器项目中的应用
 
-[TOC]
-
-> Write By CS逍遥剑仙
-> 我的主页: [www.csxiaoyao.com](http://www.csxiaoyao.com)
-> GitHub: [github.com/csxiaoyaojianxian](https://github.com/csxiaoyaojianxian)
-> Email: sunjianfeng@csxiaoyao.com   
-
-
+> Write By [CS逍遥剑仙](http://home.ustc.edu.cn/~cssjf/)   
+> 我的主页: [csxiaoyao.com](https://csxiaoyao.com)   
+> GitHub: [github.com/csxiaoyaojianxian](https://github.com/csxiaoyaojianxian)   
+> Email: [sunjianfeng@csxiaoyao.com](mailto:sunjianfeng@csxiaoyao.com)  
+> QQ: [1724338257](http://wpa.qq.com/msgrd?uin=1724338257&site=qq&menu=yes)
 
 前端开发者对函数防抖和函数节流或多或少有些了解，最近在做一个H5编辑器的项目，由于画布功能复杂，计算量较大，在鼠标拖拽操作时尤其是在低配电脑上能够明显感受到卡顿，自然联想运用函数防抖(debounce)和函数节流(throttle)来优化 `mousemove` 等实时计算方法的计算频率再合适不过了。
 
@@ -45,7 +42,7 @@
 
 如果上述还不够明了，下图三种方式对 `mousemove` 的监听可以很好地解释 `debounce` 和 `throttle` 的区别，当鼠标停下一定时间，`debounce` 才会执行，而 `throttle` 也会一直执行，但是频率明显低于常规 `mousemove`。
 
-![](./pic/01.png)
+![](./120/01.png)
 
 ## 3. 实际工程应用场景
 
@@ -167,6 +164,4 @@ window.addEventListener('resize', throttle(foo, 2000)) // 大部分场景下 res
 
 函数防抖节流的实现非常简单，却能解决前端开发过程中的很多问题，提升性能，优化用户体验，尤其是应对像H5编辑器这样的交互复杂的前端项目更是不可或缺，在实际的工程项目中，防抖函数还是节流函数的选择需要开发者针对不同的应用场景进行选择。
 
-
-
-![](https://raw.githubusercontent.com/csxiaoyaojianxian/ImageHosting/master/img/sign.jpg)
+![sign](https://raw.githubusercontent.com/csxiaoyaojianxian/ImageHosting/master/img/sign.jpg)

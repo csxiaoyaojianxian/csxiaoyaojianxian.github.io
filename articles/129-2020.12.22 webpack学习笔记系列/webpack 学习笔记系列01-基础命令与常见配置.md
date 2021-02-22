@@ -1,11 +1,10 @@
-# 【云+社区年度征文】webpack 学习笔记系列01-基础命令与常见配置
+# webpack 学习笔记系列01-基础命令与常见配置
 
-[toc]
-
-> Write By CS逍遥剑仙   
-> 我的主页: [www.csxiaoyao.com](http://www.csxiaoyao.com/)    
-> GitHub: [github.com/csxiaoyaojianxian](https://github.com/csxiaoyaojianxian)    
-> Email: sunjianfeng@csxiaoyao.com   
+> Write By [CS逍遥剑仙](http://home.ustc.edu.cn/~cssjf/)   
+> 我的主页: [csxiaoyao.com](https://csxiaoyao.com)   
+> GitHub: [github.com/csxiaoyaojianxian](https://github.com/csxiaoyaojianxian)   
+> Email: [sunjianfeng@csxiaoyao.com](mailto:sunjianfeng@csxiaoyao.com)  
+> QQ: [1724338257](http://wpa.qq.com/msgrd?uin=1724338257&site=qq&menu=yes)
 
 ## 1. webpack 命令
 
@@ -604,7 +603,4 @@ module.exports = {
 1. webpack-cli 常用命令官方文档：[https://webpack.js.org/api/cli/](https://webpack.js.org/api/cli/)
 
 
-
-
-
-![](./pic/sign.jpg)
+![sign](https://raw.githubusercontent.com/csxiaoyaojianxian/ImageHosting/master/img/sign.jpg)

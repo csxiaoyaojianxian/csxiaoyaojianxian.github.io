@@ -4,7 +4,7 @@
 > 我的主页: [csxiaoyao.com](https://csxiaoyao.com)   
 > GitHub: [github.com/csxiaoyaojianxian](https://github.com/csxiaoyaojianxian)   
 > Email: [sunjianfeng@csxiaoyao.com](mailto:sunjianfeng@csxiaoyao.com)  
-> QQ: [1724338257](http://wpa.qq.com/msgrd?uin=1724338257&site=qq&menu=yes) 
+> QQ: [1724338257](http://wpa.qq.com/msgrd?uin=1724338257&site=qq&menu=yes)
 
 ## 1.  配置 typescript
 
