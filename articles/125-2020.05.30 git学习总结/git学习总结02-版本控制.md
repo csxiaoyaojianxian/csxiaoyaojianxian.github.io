@@ -1,11 +1,10 @@
 # git学习总结02 — 版本控制
 
-[TOC]
-
-> Write By CS逍遥剑仙
-> 我的主页: [www.csxiaoyao.com](http://www.csxiaoyao.com)
-> GitHub: [github.com/csxiaoyaojianxian](https://github.com/csxiaoyaojianxian)
-> Email: sunjianfeng@csxiaoyao.com   
+> Write By [CS逍遥剑仙](http://home.ustc.edu.cn/~cssjf/)   
+> 我的主页: [csxiaoyao.com](https://csxiaoyao.com)   
+> GitHub: [github.com/csxiaoyaojianxian](https://github.com/csxiaoyaojianxian)   
+> Email: [sunjianfeng@csxiaoyao.com](mailto:sunjianfeng@csxiaoyao.com)  
+> QQ: [1724338257](http://wpa.qq.com/msgrd?uin=1724338257&site=qq&menu=yes)
 
 ## 1. 历史记录查询 log & reflog 
 
@@ -28,7 +27,7 @@ $ git log --author="csxiaoyao"
 $ git log --graph --pretty=oneline --abbrev-commit
 ```
 
-![](https://raw.githubusercontent.com/csxiaoyaojianxian/ImageHosting/master/blog/125/gif/reflog.gif)
+![](./125/gif/reflog.gif)
 
 ## 2. 本地库版本管理 reset
 
@@ -56,7 +55,7 @@ $ git reset --hard HEAD~n # 后退n步
 
 如下图，使用软重置可以撤销提交记录，但保留新建的 index.js 和 style.css 文件。
 
-![](https://raw.githubusercontent.com/csxiaoyaojianxian/ImageHosting/master/blog/125/gif/reset-soft.gif)
+![](./125/gif/reset-soft.gif)
 
 ### 2.3 --mixed (默认)
 
@@ -68,7 +67,7 @@ $ git reset --hard HEAD~n # 后退n步
 
 如下图，硬重置不保留已提交的修改，直接将当前分支的状态恢复到某个特定提交下，同时将当前工作区和暂存区中的文件全部移除。
 
-![](https://raw.githubusercontent.com/csxiaoyaojianxian/ImageHosting/master/blog/125/gif/reset-hard.gif)
+![](./125/gif/reset-hard.gif)
 
 ## 3. 远程版本还原 revert
 
@@ -80,7 +79,7 @@ reset 适用于本地库中的版本控制，然而远程分支只能使用 reve
 $ git revert ec5be
 ```
 
-![](https://raw.githubusercontent.com/csxiaoyaojianxian/ImageHosting/master/blog/125/gif/revert.gif)
+![](./125/gif/revert.gif)
 
 ## 4. 工作区修改丢弃 checkout (特殊)
 
@@ -222,5 +221,4 @@ $ git reset --hard origin/master
 <https://www.liaoxuefeng.com/wiki/896043488029600>
 
 
-
-![](https://raw.githubusercontent.com/csxiaoyaojianxian/ImageHosting/master/img/sign.jpg)
+![sign](https://raw.githubusercontent.com/csxiaoyaojianxian/ImageHosting/master/img/sign.jpg)

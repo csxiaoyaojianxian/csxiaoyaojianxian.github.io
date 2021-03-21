@@ -1,14 +1,12 @@
 # 前端自动化测试实践01—持续集成之jest自动化测试环境搭建
 
-[toc]
+> Write By [CS逍遥剑仙](http://home.ustc.edu.cn/~cssjf/)   
+> 我的主页: [csxiaoyao.com](https://csxiaoyao.com)   
+> GitHub: [github.com/csxiaoyaojianxian](https://github.com/csxiaoyaojianxian)   
+> Email: [sunjianfeng@csxiaoyao.com](mailto:sunjianfeng@csxiaoyao.com)  
+> QQ: [1724338257](http://wpa.qq.com/msgrd?uin=1724338257&site=qq&menu=yes)
 
-> Write By CS逍遥剑仙
-> 我的主页: [www.csxiaoyao.com](http://www.csxiaoyao.com)
-> GitHub: [github.com/csxiaoyaojianxian](https://github.com/csxiaoyaojianxian)
-> Email: sunjianfeng@csxiaoyao.com   
-
-
-> 本节代码地址 [https://github.com/csxiaoyaojianxian/JavaScriptStudy](https://github.com/csxiaoyaojianxian/JavaScriptStudy) 下的自动化测试目录
+本节代码地址 [https://github.com/csxiaoyaojianxian/JavaScriptStudy](https://github.com/csxiaoyaojianxian/JavaScriptStudy) 下的自动化测试目录
 
 ## 1. 概念 
 
@@ -20,15 +18,15 @@
 
 具体来说，持续集成是一种软件开发实践，强调开发人员在提交新代码后立刻进行构建、自动化测试等，频繁自动将代码集成到主干和生产环境，降低一次性集成过多代码带来的风险。
 
-![](./pic/1-01.jpg)
+![](./118/1-01.jpg)
 
 持续交付在持续集成的基础上，将集成后的代码部署到更贴近真实运行环境的"类生产环境"中。比如把完成单元测试的代码部署包含完整功能的预发布环境中运行更多更完整的集成测试，甚至是人工测试，通过后继续手动部署到生产环境中。
 
-![](./pic/1-02.jpg)
+![](./118/1-02.jpg)
 
 持续部署则是在持续交付的基础上，把部署到生产环境的过程自动化。
 
-![](./pic/1-03.jpg)
+![](./118/1-03.jpg)
 
 ### 1.2 持续集成 & 前端自动化测试
 
@@ -211,6 +209,4 @@ module.exports = {
 $ npm run test:unit
 ```
 
-
-
-![](https://raw.githubusercontent.com/csxiaoyaojianxian/ImageHosting/master/img/sign.jpg)
+![sign](https://raw.githubusercontent.com/csxiaoyaojianxian/ImageHosting/master/img/sign.jpg)

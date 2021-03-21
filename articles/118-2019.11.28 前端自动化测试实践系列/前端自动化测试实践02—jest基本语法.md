@@ -1,13 +1,12 @@
 # 前端自动化测试实践02—jest基本语法
 
-[toc]
+> Write By [CS逍遥剑仙](http://home.ustc.edu.cn/~cssjf/)   
+> 我的主页: [csxiaoyao.com](https://csxiaoyao.com)   
+> GitHub: [github.com/csxiaoyaojianxian](https://github.com/csxiaoyaojianxian)   
+> Email: [sunjianfeng@csxiaoyao.com](mailto:sunjianfeng@csxiaoyao.com)  
+> QQ: [1724338257](http://wpa.qq.com/msgrd?uin=1724338257&site=qq&menu=yes)
 
-> Write By CS逍遥剑仙
-> 我的主页: [www.csxiaoyao.com](http://www.csxiaoyao.com)
-> GitHub: [github.com/csxiaoyaojianxian](https://github.com/csxiaoyaojianxian)
-> Email: sunjianfeng@csxiaoyao.com   
-
-> 本节代码地址 [https://github.com/csxiaoyaojianxian/JavaScriptStudy](https://github.com/csxiaoyaojianxian/JavaScriptStudy) 下的自动化测试目录
+本节代码地址 [https://github.com/csxiaoyaojianxian/JavaScriptStudy](https://github.com/csxiaoyaojianxian/JavaScriptStudy) 下的自动化测试目录
 
 ## 1. matchers 匹配器 
 
@@ -254,5 +253,4 @@ test('测试 addDivToBody', () => {
 ```
 
 
-
-![](https://raw.githubusercontent.com/csxiaoyaojianxian/ImageHosting/master/img/sign.jpg)
+![sign](https://raw.githubusercontent.com/csxiaoyaojianxian/ImageHosting/master/img/sign.jpg)

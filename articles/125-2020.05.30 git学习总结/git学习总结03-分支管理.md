@@ -1,11 +1,10 @@
 # git学习总结03 — 分支管理
 
-[TOC]
-
-> Write By CS逍遥剑仙
-> 我的主页: [www.csxiaoyao.com](http://www.csxiaoyao.com)
-> GitHub: [github.com/csxiaoyaojianxian](https://github.com/csxiaoyaojianxian)
-> Email: sunjianfeng@csxiaoyao.com   
+> Write By [CS逍遥剑仙](http://home.ustc.edu.cn/~cssjf/)   
+> 我的主页: [csxiaoyao.com](https://csxiaoyao.com)   
+> GitHub: [github.com/csxiaoyaojianxian](https://github.com/csxiaoyaojianxian)   
+> Email: [sunjianfeng@csxiaoyao.com](mailto:sunjianfeng@csxiaoyao.com)  
+> QQ: [1724338257](http://wpa.qq.com/msgrd?uin=1724338257&site=qq&menu=yes)
 
 ## 1. 分支基本操作 branch & checkout
 
@@ -45,7 +44,7 @@ $ git branch -D [branch name]
 
 merge 分支合并有 `fast-forward` 和 `no-fast-forward` 两种模式。下图 dev 合入 master，默认触发快进模式(fast-forward)，因为只需要修改指针即可实现合并；而普通模式(no-fast-forward)需要生成一个新的commit，因此即使 dev 分支删除，也能从 master 分支历史上看出分支合并信息。
 
-![](https://raw.githubusercontent.com/csxiaoyaojianxian/ImageHosting/master/blog/125/3-01.png)
+![](./125/3-01.png)
 
 ```shell
 # 查看分支合并图
@@ -65,7 +64,7 @@ $ git log --graph --pretty=oneline --abbrev-commit
 $ git merge dev
 ```
 
-![](https://raw.githubusercontent.com/csxiaoyaojianxian/ImageHosting/master/blog/125/gif/fast-forward.gif)
+![](./125/gif/fast-forward.gif)
 
 ### 2.3 no-fast-forward 模式
 
@@ -86,7 +85,7 @@ $ git config --global --add merge.ff false
 $ git config branch.[branch name].mergeoptions "--no-ff"
 ```
 
-![](https://raw.githubusercontent.com/csxiaoyaojianxian/ImageHosting/master/blog/125/gif/no-fast-forward.gif)
+![](./125/gif/no-fast-forward.gif)
 
 - 冲突解决
 
@@ -97,7 +96,7 @@ $ git add [file name]
 $ git commit -m "some message" # 注意：此时 commit 不能加具体文件名
 ```
 
-![](https://raw.githubusercontent.com/csxiaoyaojianxian/ImageHosting/master/blog/125/gif/merge-conflict.gif)
+![](./125/gif/merge-conflict.gif)
 
 ### 2.4 rebase 变基
 
@@ -108,7 +107,7 @@ rebase 操作可以通过复制提交记录，改变本地未 push 的分叉提�
 $ git rebase master
 ```
 
-![](https://raw.githubusercontent.com/csxiaoyaojianxian/ImageHosting/master/blog/125/gif/rebase.gif)
+![](./125/gif/rebase.gif)
 
 > 关于交互式变基修改 commit (commit合并、顺序调整、提交日志修改) 等可以参考 [<https://dev.to/lydiahallie/cs-visualized-useful-git-commands-37p1>](https://dev.to/lydiahallie/cs-visualized-useful-git-commands-37p1)
 
@@ -152,7 +151,7 @@ $ git cherry-pick [提交索引]
 
 如下图，dev 分支上的 76d12 提交添加了 index.js 文件，使用 cherry-pick 将本次提交更改加入到 master 分支。
 
-![](https://raw.githubusercontent.com/csxiaoyaojianxian/ImageHosting/master/blog/125/gif/cherry-pick.gif)
+![](./125/gif/cherry-pick.gif)
 
 ## 5. 远程仓库&多人协作
 
@@ -160,7 +159,7 @@ $ git cherry-pick [提交索引]
 
 多人协作分为团队内部协作和跨团队协作。
 
-![](https://raw.githubusercontent.com/csxiaoyaojianxian/ImageHosting/master/blog/125/3-02.png)
+![](./125/3-02.png)
 
 ### 5.2 配置ssh
 
@@ -218,7 +217,7 @@ $ git push origin master
 
 ### 5.5 fetch & pull
 
-![](./pic/3-04.jpg)
+![](./125/3-04.jpg)
 
 若分支 push 失败，提示远程分支比本地分支更新，则需要先更新本地，合并后再尝试 push，更新有两种方式：`fetch` 和 `pull`。
 
@@ -247,7 +246,7 @@ $ git merge temp
 $ git branch -d temp
 ```
 
-![](https://raw.githubusercontent.com/csxiaoyaojianxian/ImageHosting/master/blog/125/gif/fetch.gif)
+![](./125/gif/fetch.gif)
 
 ```shell
 # pull = fetch + merge
@@ -257,7 +256,7 @@ $ git pull
 $ git branch --set-upstream-to <branch-name> origin/<branch-name>
 ```
 
-![](https://raw.githubusercontent.com/csxiaoyaojianxian/ImageHosting/master/blog/125/gif/pull.gif)
+![](./125/gif/pull.gif)
 
 ### 5.6 Fork / Pull request
 
@@ -275,7 +274,7 @@ $ git branch --set-upstream-to <branch-name> origin/<branch-name>
 
 **feature**：功能分支
 
-![](https://raw.githubusercontent.com/csxiaoyaojianxian/ImageHosting/master/blog/125/3-05.png)
+![](./125/3-05.png)
 
 
 
@@ -293,4 +292,4 @@ $ git branch --set-upstream-to <branch-name> origin/<branch-name>
 
 
 
-![](https://raw.githubusercontent.com/csxiaoyaojianxian/ImageHosting/master/img/sign.jpg)
+![sign](https://raw.githubusercontent.com/csxiaoyaojianxian/ImageHosting/master/img/sign.jpg)

@@ -1,11 +1,10 @@
 # webpack 学习笔记系列03-babel
 
-[TOC]
-
-> Write By CS逍遥剑仙   
-> 我的主页: [www.csxiaoyao.com](http://www.csxiaoyao.com/)    
-> GitHub: [github.com/csxiaoyaojianxian](https://github.com/csxiaoyaojianxian)    
-> Email: sunjianfeng@csxiaoyao.com   
+> Write By [CS逍遥剑仙](http://home.ustc.edu.cn/~cssjf/)   
+> 我的主页: [csxiaoyao.com](https://csxiaoyao.com)   
+> GitHub: [github.com/csxiaoyaojianxian](https://github.com/csxiaoyaojianxian)   
+> Email: [sunjianfeng@csxiaoyao.com](mailto:sunjianfeng@csxiaoyao.com)  
+> QQ: [1724338257](http://wpa.qq.com/msgrd?uin=1724338257&site=qq&menu=yes)
 
 ## 1.  babel-cli 命令行工具
 
@@ -397,6 +396,4 @@ babel 在每个需要转换的代码前面都会插入一些 helpers 代码，�
 }
 ```
 
-
-
-![](./pic/sign.jpg)
+![sign](https://raw.githubusercontent.com/csxiaoyaojianxian/ImageHosting/master/img/sign.jpg)

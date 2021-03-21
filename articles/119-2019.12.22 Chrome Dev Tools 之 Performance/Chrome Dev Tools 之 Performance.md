@@ -1,11 +1,10 @@
 # 前端性能分析 Chrome Dev Tools 之 Performance
 
-[TOC]
-
-> Write By CS逍遥剑仙
-> 我的主页: [www.csxiaoyao.com](http://www.csxiaoyao.com)
-> GitHub: [github.com/csxiaoyaojianxian](https://github.com/csxiaoyaojianxian)
-> Email: sunjianfeng@csxiaoyao.com   
+> Write By [CS逍遥剑仙](http://home.ustc.edu.cn/~cssjf/)   
+> 我的主页: [csxiaoyao.com](https://csxiaoyao.com)   
+> GitHub: [github.com/csxiaoyaojianxian](https://github.com/csxiaoyaojianxian)   
+> Email: [sunjianfeng@csxiaoyao.com](mailto:sunjianfeng@csxiaoyao.com)  
+> QQ: [1724338257](http://wpa.qq.com/msgrd?uin=1724338257&site=qq&menu=yes)
 
 作为前端开发，肯定对 Chrome 的 dev tools 不陌生，除了日常 Debug，还提供了一个非常强大的功能：performance 用做性能分析。
 
@@ -15,7 +14,7 @@
 
 首先可以打开官方提供的测试页：[<https://googlechrome.github.io/devtools-samples/jank/>](https://googlechrome.github.io/devtools-samples/jank/)，在 Chrome 控制台下输入 `window.performance` 即可得到 performance 属性字段。
 
-![](./pic/01.png)
+![](./119/01.png)
 
 ```javascript
 var performance = {
@@ -83,7 +82,7 @@ var performance = {
 
 ## 2. 常用性能数据指标计算
 
-![](./pic/02.png)
+![](./119/02.png)
 
 封装常用性能指标统计函数
 
@@ -196,7 +195,7 @@ function randomFunc (n) {
     // 测量这个两个标记的时间距离，并保存
     window.performance.measure(name, nameStart, nameEnd);
 }
-randomFunc();  
+randomFunc();
 randomFunc(888);
 // 查看保存的标记
 var marks = window.performance.getEntriesByType('mark');
@@ -239,7 +238,4 @@ console.log(domReadyMeasure);
 
 [https://developers.google.cn/web/tools/chrome-devtools/network/understanding-resource-timing](https://developers.google.cn/web/tools/chrome-devtools/network/understanding-resource-timing)
 
-
-![](https://raw.githubusercontent.com/csxiaoyaojianxian/ImageHosting/master/img/sign.jpg)
-
-
+![sign](https://raw.githubusercontent.com/csxiaoyaojianxian/ImageHosting/master/img/sign.jpg)
