@@ -1,0 +1,17 @@
+CACHE MANIFEST
+
+#要缓存的文件
+CACHE:
+    images/contact-img.jpg
+    images/education-img.jpg
+    images/experience-img.jpg
+    images/home-img.jpg
+    images/quotes-bg.jpg
+
+#指定必须联网才能访问的文件
+NETWORK:
+    images/about-img.jpg
+
+#当前页面无法访问时回退的页面
+FALLBACK:
+    csxiaoyao-error.html
